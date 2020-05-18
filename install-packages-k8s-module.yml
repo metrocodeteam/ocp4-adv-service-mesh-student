@@ -1,0 +1,41 @@
+---
+
+- hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+
+  - name: Install packages to support python openshift library
+    yum:
+      name: 
+        - python2-pip
+        - python2-wheel
+        - python2-dictdiffer
+        - python2-string_utils
+        - python-cachetools
+        - python2-certifi
+        - python2-google-auth
+        - python-ipaddress
+        - python2-oauthlib
+        - python2-pyasn1
+        - python2-pyasn1-modules
+        - python2-dateutil
+        - python2-pyyaml
+        - python2-requests-oauthlib
+        - python2-ruamel-ordereddict
+        - python2-ruamel-yaml
+        - python-urllib3
+        - python-websocket-client
+        - python-jwcrypto
+        - python2-rsa
+        - python2-six
+        - python2-typing
+      state: present
+    become: yes
+
+
+  - name: Install openshift python package
+    pip:
+      name: openshift
+      extra_args: --user
+    become: no
